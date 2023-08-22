@@ -1,8 +1,5 @@
-/**
- * displayMessage: prints in STDOUT the string argument.
- */
-function displayMessage(STDOUT) {
-  process.stdout.write(`${STDOUT}\n`);
+function displayMessage(string) {
+  process.stdout.write(`${string}\n`);
 }
 
 module.exports = displayMessage;
