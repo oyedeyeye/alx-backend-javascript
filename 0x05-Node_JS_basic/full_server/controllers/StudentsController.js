@@ -1,11 +1,13 @@
 const readDatabase = require('../utils');
 
+const dbPath = process.argv[2];
+
 class StudentsController {
   static getAllStudents(request, response) {
     response.statusCode = 200;
     response.setHeader('Content-Type', 'text/plain');
     response.write('This is the list of our students\n');
-    readDatabase(process.argv.pop())
+    readDatabase(dbPath)
       .then((data) => {
         response.write(`Number of students in CS: ${data['CS'].length}. List: ${data['CS'].join(', ')}\n`);
         response.write(`Number of students in SWE: ${data['SWE'].length}. List: ${data['SWE'].join(', ')}\n`);
@@ -26,7 +28,7 @@ class StudentsController {
       response.end();
       return;
     }
-    readDatabase(process.argv.pop())
+    readDatabase(dbPath)
       .then((data) => {
         response.write(`List: ${data[major].join(', ')}\n`);
         response.end();

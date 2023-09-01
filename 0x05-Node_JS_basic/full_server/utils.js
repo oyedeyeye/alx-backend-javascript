@@ -9,15 +9,15 @@ async function readDatabase(path) {
     throw new Error(error);
   }
 
-  const students = data.split('\r\n').slice(1)
+  const students = data.split('\n')
     .map((student) => student.split(','))
+    .filter(((student) => student.length === 4 && student[0] !== 'firstname'))
     .map((student) => ({
       firstName: student[0],
       lastName: student[1],
       age: student[2],
       field: student[3],
     }));
-  console.log(students);
 
   const fields = students.map((student) => student.field);
   const uniqueFields = new Set(fields);
@@ -26,10 +26,11 @@ async function readDatabase(path) {
   for (const field of uniqueFields) {
     studentsByField[field] = [];
   }
+
   for (const student of students) {
     studentsByField[student.field].push(student.firstName);
   }
-  console.log(studentsByField);
+
   return studentsByField;
 
   // const csStudents = students
