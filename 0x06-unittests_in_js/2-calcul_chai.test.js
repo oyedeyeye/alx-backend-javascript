@@ -1,9 +1,9 @@
 const chai = require('chai');
 const expect = chai.expect;
-const calculateNumber = require('./1-calcul');
+const calculateNumber = require('./2-calcul');
 
 describe("calculateNumber", () => {
-  describe("sum of number - SUM", () => {
+  describe("type=SUM", () => {
     it("first number rounded", () => {
       expect(calculateNumber('SUM', 1.5, 3)).to.equal(5);
       expect(calculateNumber('SUM', 1.4, 0)).to.equal(1);
@@ -31,7 +31,7 @@ describe("calculateNumber", () => {
     });
   });
 
-  describe("Subtraction of number - SUBTRACT", () => {
+  describe("type=SUBTRACT", () => {
     it("subtract from first number rounded", () => {
       expect(calculateNumber('SUBTRACT', 4.5, 3)).to.equal(2);
       expect(calculateNumber('SUBTRACT', 1.4, 0)).to.equal(1);
@@ -60,7 +60,7 @@ describe("calculateNumber", () => {
     });
   });
 
-  describe("Division of number - DIVIDE", () => {
+  describe("type=DIVIDE", () => {
     it("Divide first number rounded", () => {
       expect(calculateNumber('DIVIDE', 1.5, 4)).to.equal(0.5);
       expect(calculateNumber('DIVIDE', 8.5, 4)).to.equal(2.25);
