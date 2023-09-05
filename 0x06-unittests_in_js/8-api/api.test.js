@@ -18,7 +18,7 @@ describe('Integration Testing', () => {
       });
     });
 
-    it('Status code and response body', () => {
+    it('Should return the response body', () => {
       request(params, (err, res, body) => {
         // console.error(err); // print the error should in case one occurs
         expect(body).to.equal('Welcome to the payment system');
