@@ -1,4 +1,5 @@
-const { expect } = require('chai');
+const chai = require('chai');
+const expect = chai.expect;
 const request = require('request');
 
 describe('Integration Testing', () => {
@@ -10,10 +11,10 @@ describe('Integration Testing', () => {
   describe('GET request method', () => {
 
     it('should verify the request method', () => {
-      request(params, (err, res, body) => {
+      request.get(params, (err, res) => {
         // console.error(err); // print the error should in case one occurs
         expect(res.statusCode).to.equal(200);
-        done();
+        expect(res.body.length).to.equal(29);
       });
     });
 
@@ -21,7 +22,7 @@ describe('Integration Testing', () => {
       request(params, (err, res, body) => {
         // console.error(err); // print the error should in case one occurs
         expect(body).to.equal('Welcome to the payment system');
-        done();
+        expect(typeof body).to.be.a('string');
       });
     });
   });
